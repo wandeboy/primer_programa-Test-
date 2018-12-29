@@ -1,6 +1,7 @@
 
+from random import randrange
 
-numero_ganador = 8
+numero_ganador = randrange(15)
 
 print("Adivina un numero del 1 al 15 (5 intentos)")
 

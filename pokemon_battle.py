@@ -61,13 +61,13 @@ while pikachu_life > 0 and enemy_life > 0:
     attack = (input("your turn, choose your attack ([1] Iron Tail or [2] Thunder Shock): "))
     if attack == "1":
         print("your pokemon use Iron Tail")
-        dmg = (0.01 * 0.5 * randint(50, 120)) * (((0.2 * 100 + 1) * 160 * 100) / (25 * enemy_s_def))
+        dmg = (0.01 * 0.5 * randint(50, 120)) * ((((0.2 * 100 + 1) * 160 * 100) / (25 * enemy_s_def))+2)
         enemy_life -= dmg
         print("enemy life {}".format(int(enemy_life)))
 
     elif attack == "2":
         print("your pokemon use Thunder Shock")
-        dmg = (0.01 * 0.5 * randint(50, 120)) * (((0.2 * 100 + 1) * 122 * 80) / (25 * enemy_s_def))
+        dmg = (0.01 * 0.5 * randint(50, 120)) * ((((0.2 * 100 + 1) * 122 * 80) / (25 * enemy_s_def))+2)
         enemy_life -= dmg
         print("enemy life {}".format(int(enemy_life)))
 
@@ -80,13 +80,13 @@ while pikachu_life > 0 and enemy_life > 0:
         if random_element == 1:
             print("{} tunr".format(enemy_pokemon).capitalize())
             print("{} use {}".format(enemy_pokemon, enemy_s_attack).capitalize())
-            dmg = (0.01 * 0.5 * randint(50, 120)) * (((0.2 * 100 + 1) * enemy_s_dmg * 80) / (25 * pikachu_s_def))
+            dmg = (0.01 * 0.5 * randint(50, 120)) * ((((0.2 * 100 + 1) * enemy_s_dmg * 80) / (25 * pikachu_s_def))+2)
             pikachu_life -= dmg
             print("Pikachu life {}".format(int(pikachu_life)))
         else:
             print("{} tunr".format(enemy_pokemon).capitalize())
             print("{} use {}".format(enemy_pokemon, enemy_attack).capitalize())
-            dmg = (0.01 * 0.5 * randint(50, 120)) * (((0.2 * 100 + 1) * enemy_dmg * 80) / (25 * pikachu_def))
+            dmg = (0.01 * 0.5 * randint(50, 120)) * ((((0.2 * 100 + 1) * enemy_dmg * 80) / (25 * pikachu_def))+2)
             pikachu_life -= dmg
             print("Pikachu life {}".format(int(pikachu_life)))
 

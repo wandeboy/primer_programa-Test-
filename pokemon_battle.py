@@ -1,4 +1,5 @@
 
+from random import choice, randint
 
 print("\n")
 print("welcome to the pokemon battle".center(50, "=").title())
@@ -14,25 +15,44 @@ print("\n")
 
 enemy_pokemon = input("Now choose (Squirtle, Charmander, Bulbasaur): ").upper()
 
-pikachu_life = 100
+pikachu_life = 211
+pikachu_def = 116
+pikachu_s_def = 136
 enemy_life = 0
 enemy_dmg = 0
+enemy_s_dmg = 0
+enemy_def = 1
+enemy_s_def = 1
 enemy_attack = "unknown"
+enemy_s_attack = "unknown"
+dmg = 0
 
 if "BULBASAUR" == enemy_pokemon:
-    enemy_life = 120
-    enemy_dmg = 9
-    enemy_attack = "Vine Whip"
+    enemy_life = 231
+    enemy_dmg = 147
+    enemy_s_dmg = 149
+    enemy_def = 134
+    enemy_s_def = 166
+    enemy_attack = "Tackle"
+    enemy_s_attack = "Razor Leaf"
 
 elif "CHARMANDER" == enemy_pokemon:
-    enemy_life = 100
-    enemy_dmg = 9
-    enemy_attack = "Flamethrower"
+    enemy_life = 219
+    enemy_dmg = 154
+    enemy_s_dmg = 140
+    enemy_def = 122
+    enemy_s_def = 136
+    enemy_attack = "Tackle"
+    enemy_s_attack = "Flamethrower"
 
 elif "SQUIRTLE" == enemy_pokemon:
-    enemy_life = 80
-    enemy_dmg = 11
-    enemy_attack = "Water Gun"
+    enemy_life = 229
+    enemy_dmg = 145
+    enemy_s_dmg = 122
+    enemy_def = 166
+    enemy_s_def = 164
+    enemy_attack = "Tackle"
+    enemy_s_attack = "Water pulse"
 
 print("your life {}".format(pikachu_life))
 print("enemy life {}".format(enemy_life))
@@ -41,25 +61,34 @@ while pikachu_life > 0 and enemy_life > 0:
     attack = (input("your turn, choose your attack ([1] Iron Tail or [2] Thunder Shock): "))
     if attack == "1":
         print("your pokemon use Iron Tail")
-        enemy_life -= 10
-        print("enemy life {}".format(enemy_life))
+        dmg = (0.01 * 0.5 * randint(50, 120)) * (((0.2 * 100 + 1) * 160 * 100) / (25 * enemy_s_def))
+        enemy_life -= dmg
+        print("enemy life {}".format(int(enemy_life)))
 
     elif attack == "2":
         print("your pokemon use Thunder Shock")
-        enemy_life -= 12
-        print("enemy life {}".format(enemy_life))
+        dmg = (0.01 * 0.5 * randint(50, 120)) * (((0.2 * 100 + 1) * 122 * 80) / (25 * enemy_s_def))
+        enemy_life -= dmg
+        print("enemy life {}".format(int(enemy_life)))
 
     else:
         print("¡miss!")
 
     if enemy_life > 0:
-        print("{} tunr".format(enemy_pokemon).capitalize())
+        random_element = choice((1, 2))
 
-        print("{} use {}".format(enemy_pokemon, enemy_attack).capitalize())
-
-        pikachu_life -= enemy_dmg
-
-        print("Pikachu life {}".format(pikachu_life))
+        if random_element == 1:
+            print("{} tunr".format(enemy_pokemon).capitalize())
+            print("{} use {}".format(enemy_pokemon, enemy_s_attack).capitalize())
+            dmg = (0.01 * 0.5 * randint(50, 120)) * (((0.2 * 100 + 1) * enemy_s_dmg * 80) / (25 * pikachu_s_def))
+            pikachu_life -= dmg
+            print("Pikachu life {}".format(int(pikachu_life)))
+        else:
+            print("{} tunr".format(enemy_pokemon).capitalize())
+            print("{} use {}".format(enemy_pokemon, enemy_attack).capitalize())
+            dmg = (0.01 * 0.5 * randint(50, 120)) * (((0.2 * 100 + 1) * enemy_dmg * 80) / (25 * pikachu_def))
+            pikachu_life -= dmg
+            print("Pikachu life {}".format(int(pikachu_life)))
 
 if pikachu_life <= 0:
     print("Your Pokemon is Fainted")

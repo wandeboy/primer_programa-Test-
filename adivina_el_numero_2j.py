@@ -26,7 +26,7 @@ while choose != '0' and choose != '1' and choose != '2' \
         difficult_max = 5
     elif choose == '1':
         difficult_min = 3
-        difficult_max = 12
+        difficult_max = 13
     elif choose == '2':
         difficult_min = 5
         difficult_max = 20
@@ -38,7 +38,7 @@ while choose != '0' and choose != '1' and choose != '2' \
         difficult_max = 35
     elif choose == '5':
         difficult_min = 30
-        difficult_max = 50
+        difficult_max = 100
     elif choose == '':
         difficult_max = 0
         difficult_min = 0
@@ -87,8 +87,8 @@ print("\n")
 print("\n")
 
 if choose != '':
-    print("the number is between {} and {}".format(winner_number - randrange(difficult_min, difficult_max),
-                                                   winner_number + randrange(difficult_min, difficult_max)))
+    print("the number is between {} and {}".format(int(winner_number) - randrange(difficult_min, difficult_max),
+                                                   int(winner_number) + randrange(difficult_min, difficult_max)))
 
 while winner_number != guess_number and 'END' != guess_number:
     guess_number = input("Now try to guess: ")

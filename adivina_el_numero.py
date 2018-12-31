@@ -5,13 +5,12 @@ numero_ganador = randrange(15)
 win = "false"
 print("Adivina un numero del 1 al 15 (5 intentos)")
 
-primer_intento = 0
+primer_intento = int(input("Primer intento: "))
 segundo_intento = 0
 tercer_intento = 0
 cuarto_intento = 0
 quitno_intento = 0
 
-primer_intento = int(input("Primer intento: "))
 
 if primer_intento == numero_ganador:
     win = "true1"

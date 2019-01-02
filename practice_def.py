@@ -12,7 +12,6 @@ def max_between_three(first, second, third):
 
 def number_in_range(number, minimum, maximum):
 
-
     if minimum <= number <= maximum:
         return True
     else:

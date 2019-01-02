@@ -28,6 +28,13 @@ def pair(numbers):
     return return_list
 
 
-user_list = [1, 2, 3, 4, 5, 6]
+def underlines(string):
+
+    print(string)
+    final_underline = ''
+    for repeat in range(len(string)):
+        final_underline += '-'
+    print(final_underline)
+
 
 

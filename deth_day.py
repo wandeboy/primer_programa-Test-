@@ -56,6 +56,8 @@ elif sports == 'SOMETIMES' or sports == 'S':
 lifespan = average_lifespan - life_penalty
 death_day = user_birthday + datetime.timedelta(days=lifespan*365)
 day_to_death = death_day - datetime.datetime.now()
+weekday_n = death_day.weekday()
 
-print('Your death date is {}, you have {} days left'.format(death_day.strftime('%d/%m/%Y'), day_to_death.days))
+print('{}, you have {} days left'.format(death_day.strftime('Your death date is %d/%m/%Y on %A'), day_to_death.days))
 print('enjoy them')
+

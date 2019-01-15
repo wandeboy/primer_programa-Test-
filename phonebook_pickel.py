@@ -45,7 +45,42 @@ def add_contact(contacts):
 
 
 def remove_contact(contacts):
-    pass
+    print("\n\nEliminar contacto\n")
+    search_term = input("Introducir el nombre del contacto o parte de él: ")
+    found_contacts = []
+
+    print("He encontrado los siguientes contactos:")
+    contact_indexes = []
+    contact_counter = 0
+
+    for contact in contacts:
+        if contact["name"].find(search_term) >= 0:
+            found_contacts.append(contact)
+            print("{} - {}".format(contact_counter, contact["name"]))
+            contact_indexes.append(contact_counter)
+            contact_counter += 1
+
+    contact_index = 0
+
+    if len(contact_indexes) > 1:
+        contact_index = ask_until_option_expected(contact_indexes)
+
+    elif len(contact_indexes) == 0:
+        print("No se ha encontrado ninguno.")
+        return
+
+    print('Seguro que quieres borrar a {}'.format(found_contacts[contact_index]["name"]))
+    print('Si = 1')
+    print('No = 2')
+    if ask_until_option_expected([1, 2]) == 1:
+        pass
+    else:
+        return
+
+    print("\nSe ha eliminado {} de tu lista\n".format(found_contacts[contact_index]["name"]))
+    contact_for_remove = contacts.index(found_contacts[contact_index])
+    contacts.pop(contact_for_remove)
+    sleep(2)
 
 
 def find_contact(contacts):
@@ -78,6 +113,7 @@ def find_contact(contacts):
 
 
 def export_contacts():
+
     pass
 
 

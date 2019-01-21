@@ -1,6 +1,7 @@
 import pickle
-
 from time import sleep
+from class_contact import Contact
+
 
 ACTION_ADD_CONTACT = 1
 ACTION_REMOVE_CONTACT = 2
@@ -34,13 +35,10 @@ def show_menu():
 
 def add_contact(contacts):
     print("\n\nAñadir contacto\n")
-    contact = {
-        "name": input("Nombre: "),
-        "phone": input("Teléfono: "),
-        "email": input("Email: ")
-    }
+
+    contact = Contact(name=input('Nombre: '), phone=input("Teléfono: "), email=input("Email: "))
     contacts.append(contact)
-    print("Se ha añadido el contacto {} correctamente\n".format(contact["name"]))
+    print("Se ha añadido el contacto {} correctamente\n".format(contact.name))
     sleep(2)
 
 
@@ -54,9 +52,9 @@ def remove_contact(contacts):
     contact_counter = 0
 
     for contact in contacts:
-        if contact["name"].find(search_term) >= 0:
+        if contact.name.find(search_term) >= 0:
             found_contacts.append(contact)
-            print("{} - {}".format(contact_counter, contact["name"]))
+            print("{} - {}".format(contact_counter, contact.name))
             contact_indexes.append(contact_counter)
             contact_counter += 1
 
@@ -69,7 +67,7 @@ def remove_contact(contacts):
         print("No se ha encontrado ninguno.")
         return
 
-    print('Seguro que quieres borrar a {}'.format(found_contacts[contact_index]["name"]))
+    print('Seguro que quieres borrar a {}'.format(found_contacts[contact_index].name))
     print('Si = 1')
     print('No = 2')
     if ask_until_option_expected([1, 2]) == 1:
@@ -77,7 +75,7 @@ def remove_contact(contacts):
     else:
         return
 
-    print("\nSe ha eliminado {} de tu lista\n".format(found_contacts[contact_index]["name"]))
+    print("\nSe ha eliminado {} de tu lista\n".format(found_contacts[contact_index].name))
     contact_for_remove = contacts.index(found_contacts[contact_index])
     contacts.pop(contact_for_remove)
     sleep(2)
@@ -93,9 +91,9 @@ def find_contact(contacts):
     contact_counter = 0
 
     for contact in contacts:
-        if contact["name"].find(search_term) >= 0:
+        if contact.name.find(search_term) >= 0:
             found_contacts.append(contact)
-            print("{} - {}".format(contact_counter, contact["name"]))
+            print("{} - {}".format(contact_counter, contact.name))
             contact_indexes.append(contact_counter)
             contact_counter += 1
 
@@ -107,8 +105,10 @@ def find_contact(contacts):
         print("No se ha encontrado ninguno.")
         return
 
-    print("\nInformación sobre {}\n".format(found_contacts[contact_index]["name"]))
-    print("Nombre: {name}, Telefono: {phone}, Email: {email}\n\n".format(**found_contacts[contact_index]))
+    print("\nInformación sobre {}\n".format(found_contacts[contact_index].name))
+    print("Nombre: {}, Telefono: {}, Email: {}\n\n".format(found_contacts[contact_index].name,
+                                                           found_contacts[contact_index].phone,
+                                                           found_contacts[contact_index].email))
     sleep(2)
 
 

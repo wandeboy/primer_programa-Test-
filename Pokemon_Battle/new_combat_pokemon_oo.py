@@ -72,99 +72,135 @@ class Pokemon:
         else:
             return 1
 
-    def effectiveness(self, atk, enemy_pokemon):
-        if (atk.type == 'rock' and enemy_pokemon.type == 'fight')\
-                or (atk.type == 'bug' and enemy_pokemon.type == 'fight')\
-                or (atk.type == 'fight' and enemy_pokemon.type == 'flying') \
-                or (atk.type == 'bug' and enemy_pokemon.type == 'flying') \
-                or (atk.type == 'grass' and enemy_pokemon.type == 'flying') \
-                or (atk.type == 'fight' and enemy_pokemon.type == 'poison') \
-                or (atk.type == 'poison' and enemy_pokemon.type == 'poison') \
-                or (atk.type == 'grass' and enemy_pokemon.type == 'poison') \
-                or (atk.type == 'poison' and enemy_pokemon.type == 'ground') \
-                or (atk.type == 'rock' and enemy_pokemon.type == 'ground') \
-                or (atk.type == 'normal' and enemy_pokemon.type == 'rock') \
-                or (atk.type == 'flying' and enemy_pokemon.type == 'rock') \
-                or (atk.type == 'poison' and enemy_pokemon.type == 'rock') \
-                or (atk.type == 'fire' and enemy_pokemon.type == 'rock') \
+    @staticmethod
+    def effectiveness(atk, enemy_pokemon):
+        if (atk.type == 'steel' and enemy_pokemon.type == 'steel')\
+                or (atk.type == 'bug' and enemy_pokemon.type == 'steel')\
+                or (atk.type == 'dragon' and enemy_pokemon.type == 'steel')\
+                or (atk.type == 'fairy' and enemy_pokemon.type == 'steel') \
+                or (atk.type == 'ice' and enemy_pokemon.type == 'steel') \
+                or (atk.type == 'normal' and enemy_pokemon.type == 'steel') \
+                or (atk.type == 'grass' and enemy_pokemon.type == 'steel') \
+                or (atk.type == 'psychic' and enemy_pokemon.type == 'steel')\
+                or (atk.type == 'rock' and enemy_pokemon.type == 'steel') \
+                or (atk.type == 'flying' and enemy_pokemon.type == 'steel') \
+                or (atk.type == 'steel' and enemy_pokemon.type == 'water') \
+                or (atk.type == 'water' and enemy_pokemon.type == 'water') \
+                or (atk.type == 'fire' and enemy_pokemon.type == 'water') \
+                or (atk.type == 'ice' and enemy_pokemon.type == 'water') \
                 or (atk.type == 'fight' and enemy_pokemon.type == 'bug') \
-                or (atk.type == 'ground' and enemy_pokemon.type == 'bug') \
                 or (atk.type == 'grass' and enemy_pokemon.type == 'bug') \
+                or (atk.type == 'ground' and enemy_pokemon.type == 'bug') \
+                or (atk.type == 'water' and enemy_pokemon.type == 'dragon') \
+                or (atk.type == 'electric' and enemy_pokemon.type == 'dragon') \
+                or (atk.type == 'fire' and enemy_pokemon.type == 'dragon') \
+                or (atk.type == 'grass' and enemy_pokemon.type == 'dragon') \
+                or (atk.type == 'steel' and enemy_pokemon.type == 'electric') \
+                or (atk.type == 'electric' and enemy_pokemon.type == 'electric')\
+                or (atk.type == 'flying' and enemy_pokemon.type == 'electric')\
+                or (atk.type == 'bug' and enemy_pokemon.type == 'ghost') \
                 or (atk.type == 'poison' and enemy_pokemon.type == 'ghost') \
+                or (atk.type == 'steel' and enemy_pokemon.type == 'fire') \
                 or (atk.type == 'bug' and enemy_pokemon.type == 'fire') \
                 or (atk.type == 'fire' and enemy_pokemon.type == 'fire') \
+                or (atk.type == 'fairy' and enemy_pokemon.type == 'fire') \
+                or (atk.type == 'ice' and enemy_pokemon.type == 'fire') \
                 or (atk.type == 'grass' and enemy_pokemon.type == 'fire') \
-                or (atk.type == 'fire' and enemy_pokemon.type == 'water') \
-                or (atk.type == 'water' and enemy_pokemon.type == 'water') \
-                or (atk.type == 'ice' and enemy_pokemon.type == 'water') \
-                or (atk.type == 'ground' and enemy_pokemon.type == 'grass') \
+                or (atk.type == 'bug' and enemy_pokemon.type == 'fairy') \
+                or (atk.type == 'fight' and enemy_pokemon.type == 'fairy')\
+                or (atk.type == 'dark' and enemy_pokemon.type == 'fairy') \
+                or (atk.type == 'ice' and enemy_pokemon.type == 'ice') \
+                or (atk.type == 'bug' and enemy_pokemon.type == 'fight') \
+                or (atk.type == 'rock' and enemy_pokemon.type == 'fight') \
+                or (atk.type == 'dark' and enemy_pokemon.type == 'fight') \
                 or (atk.type == 'water' and enemy_pokemon.type == 'grass') \
-                or (atk.type == 'grass' and enemy_pokemon.type == 'grass') \
                 or (atk.type == 'electric' and enemy_pokemon.type == 'grass') \
-                or (atk.type == 'flying' and enemy_pokemon.type == 'electric') \
-                or (atk.type == 'electric' and enemy_pokemon.type == 'electric') \
+                or (atk.type == 'grass' and enemy_pokemon.type == 'grass') \
+                or (atk.type == 'ground' and enemy_pokemon.type == 'grass') \
                 or (atk.type == 'fight' and enemy_pokemon.type == 'psychic') \
                 or (atk.type == 'psychic' and enemy_pokemon.type == 'psychic') \
-                or (atk.type == 'ice' and enemy_pokemon.type == 'ice') \
-                or (atk.type == 'fire' and enemy_pokemon.type == 'dragon') \
-                or (atk.type == 'water' and enemy_pokemon.type == 'dragon') \
-                or (atk.type == 'grass' and enemy_pokemon.type == 'dragon') \
-                or (atk.type == 'electric' and enemy_pokemon.type == 'dragon'):
+                or (atk.type == 'fire' and enemy_pokemon.type == 'rock') \
+                or (atk.type == 'normal' and enemy_pokemon.type == 'rock') \
+                or (atk.type == 'poison' and enemy_pokemon.type == 'rock') \
+                or (atk.type == 'flying' and enemy_pokemon.type == 'rock') \
+                or (atk.type == 'ghost' and enemy_pokemon.type == 'dark') \
+                or (atk.type == 'dark' and enemy_pokemon.type == 'dark') \
+                or (atk.type == 'poison' and enemy_pokemon.type == 'ground') \
+                or (atk.type == 'rock' and enemy_pokemon.type == 'ground') \
+                or (atk.type == 'bug' and enemy_pokemon.type == 'poison') \
+                or (atk.type == 'fairy' and enemy_pokemon.type == 'poison') \
+                or (atk.type == 'fight' and enemy_pokemon.type == 'poison') \
+                or (atk.type == 'grass' and enemy_pokemon.type == 'poison') \
+                or (atk.type == 'poison' and enemy_pokemon.type == 'poison') \
+                or (atk.type == 'bug' and enemy_pokemon.type == 'flying') \
+                or (atk.type == 'fight' and enemy_pokemon.type == 'flying') \
+                or (atk.type == 'grass' and enemy_pokemon.type == 'flying'):
             return 0.5
-        elif (atk.type == 'ghost' and enemy_pokemon.type == 'normal')\
-                or (atk.type == 'ground' and enemy_pokemon.type == 'flying') \
-                or (atk.type == 'electric' and enemy_pokemon.type == 'ground') \
-                or (atk.type == 'normal' and enemy_pokemon.type == 'ghost') \
+        elif (atk.type == 'poison' and enemy_pokemon.type == 'steel')\
                 or (atk.type == 'fight' and enemy_pokemon.type == 'ghost') \
-                or (atk.type == 'ghost' and enemy_pokemon.type == 'psychic'):
+                or (atk.type == 'normal' and enemy_pokemon.type == 'ghost') \
+                or (atk.type == 'dragon' and enemy_pokemon.type == 'fairy') \
+                or (atk.type == 'ghost' and enemy_pokemon.type == 'normal') \
+                or (atk.type == 'pyschic' and enemy_pokemon.type == 'dark') \
+                or (atk.type == 'electric' and enemy_pokemon.type == 'ground') \
+                or (atk.type == 'ground' and enemy_pokemon.type == 'flying'):
             return 0
 
-        elif (atk.type == 'fight' and enemy_pokemon.type == 'normal')\
-                or (atk.type == 'flying' and enemy_pokemon.type == 'fight') \
-                or (atk.type == 'psychic' and enemy_pokemon.type == 'fight') \
-                or (atk.type == 'rock' and enemy_pokemon.type == 'flying') \
-                or (atk.type == 'electric' and enemy_pokemon.type == 'flying') \
-                or (atk.type == 'ice' and enemy_pokemon.type == 'flying') \
-                or (atk.type == 'ground' and enemy_pokemon.type == 'poison') \
-                or (atk.type == 'bug' and enemy_pokemon.type == 'poison') \
-                or (atk.type == 'psychic' and enemy_pokemon.type == 'poison') \
-                or (atk.type == 'water' and enemy_pokemon.type == 'ground') \
-                or (atk.type == 'grass' and enemy_pokemon.type == 'ground') \
-                or (atk.type == 'ice' and enemy_pokemon.type == 'ground') \
-                or (atk.type == 'fight' and enemy_pokemon.type == 'rock') \
-                or (atk.type == 'ground' and enemy_pokemon.type == 'rock') \
-                or (atk.type == 'water' and enemy_pokemon.type == 'rock') \
-                or (atk.type == 'grass' and enemy_pokemon.type == 'rock') \
-                or (atk.type == 'flying' and enemy_pokemon.type == 'bug') \
-                or (atk.type == 'poison' and enemy_pokemon.type == 'bug') \
-                or (atk.type == 'rock' and enemy_pokemon.type == 'bug') \
-                or (atk.type == 'fire' and enemy_pokemon.type == 'bug') \
-                or (atk.type == 'ghost' and enemy_pokemon.type == 'ghost') \
-                or (atk.type == 'ground' and enemy_pokemon.type == 'fire') \
-                or (atk.type == 'rock' and enemy_pokemon.type == 'fire') \
-                or (atk.type == 'water' and enemy_pokemon.type == 'fire') \
-                or (atk.type == 'grass' and enemy_pokemon.type == 'water') \
+        elif (atk.type == 'fire' and enemy_pokemon.type == 'steel')\
+                or (atk.type == 'fight' and enemy_pokemon.type == 'steel') \
+                or (atk.type == 'ground' and enemy_pokemon.type == 'steel')\
                 or (atk.type == 'electric' and enemy_pokemon.type == 'water') \
-                or (atk.type == 'flying' and enemy_pokemon.type == 'grass') \
-                or (atk.type == 'poison' and enemy_pokemon.type == 'grass') \
+                or (atk.type == 'grass' and enemy_pokemon.type == 'water') \
+                or (atk.type == 'fire' and enemy_pokemon.type == 'bug') \
+                or (atk.type == 'rock' and enemy_pokemon.type == 'bug') \
+                or (atk.type == 'flying' and enemy_pokemon.type == 'bug') \
+                or (atk.type == 'dragon' and enemy_pokemon.type == 'dragon') \
+                or (atk.type == 'fairy' and enemy_pokemon.type == 'dragon') \
+                or (atk.type == 'ice' and enemy_pokemon.type == 'dragon') \
+                or (atk.type == 'ground' and enemy_pokemon.type == 'electric') \
+                or (atk.type == 'ghost' and enemy_pokemon.type == 'ghost') \
+                or (atk.type == 'dark' and enemy_pokemon.type == 'ghost') \
+                or (atk.type == 'water' and enemy_pokemon.type == 'fire') \
+                or (atk.type == 'rock' and enemy_pokemon.type == 'fire') \
+                or (atk.type == 'ground' and enemy_pokemon.type == 'fire')\
+                or (atk.type == 'steel' and enemy_pokemon.type == 'fairy') \
+                or (atk.type == 'poison' and enemy_pokemon.type == 'fairy') \
+                or (atk.type == 'steel' and enemy_pokemon.type == 'ice') \
+                or (atk.type == 'fire' and enemy_pokemon.type == 'ice') \
+                or (atk.type == 'fight' and enemy_pokemon.type == 'ice') \
+                or (atk.type == 'rock' and enemy_pokemon.type == 'ice') \
+                or (atk.type == 'fairy' and enemy_pokemon.type == 'fight') \
+                or (atk.type == 'psychic' and enemy_pokemon.type == 'fight') \
+                or (atk.type == 'flying' and enemy_pokemon.type == 'fight') \
+                or (atk.type == 'fight' and enemy_pokemon.type == 'normal') \
                 or (atk.type == 'bug' and enemy_pokemon.type == 'grass') \
                 or (atk.type == 'fire' and enemy_pokemon.type == 'grass') \
                 or (atk.type == 'ice' and enemy_pokemon.type == 'grass') \
-                or (atk.type == 'ground' and enemy_pokemon.type == 'electric') \
+                or (atk.type == 'poison' and enemy_pokemon.type == 'grass') \
+                or (atk.type == 'flying' and enemy_pokemon.type == 'grass') \
                 or (atk.type == 'bug' and enemy_pokemon.type == 'psychic') \
-                or (atk.type == 'fight' and enemy_pokemon.type == 'ice') \
-                or (atk.type == 'rock' and enemy_pokemon.type == 'ice') \
-                or (atk.type == 'fire' and enemy_pokemon.type == 'ice') \
-                or (atk.type == 'ice' and enemy_pokemon.type == 'dragon') \
-                or (atk.type == 'dragon' and enemy_pokemon.type == 'dragon'):
+                or (atk.type == 'ghost' and enemy_pokemon.type == 'psychic') \
+                or (atk.type == 'dark' and enemy_pokemon.type == 'psychic') \
+                or (atk.type == 'steel' and enemy_pokemon.type == 'rock')\
+                or (atk.type == 'water' and enemy_pokemon.type == 'rock')\
+                or (atk.type == 'fight' and enemy_pokemon.type == 'rock') \
+                or (atk.type == 'grass' and enemy_pokemon.type == 'rock') \
+                or (atk.type == 'ground' and enemy_pokemon.type == 'rock')\
+                or (atk.type == 'bug' and enemy_pokemon.type == 'dark') \
+                or (atk.type == 'fairy' and enemy_pokemon.type == 'dark') \
+                or (atk.type == 'fight' and enemy_pokemon.type == 'dark')\
+                or (atk.type == 'water' and enemy_pokemon.type == 'ground') \
+                or (atk.type == 'ice' and enemy_pokemon.type == 'ground') \
+                or (atk.type == 'grass' and enemy_pokemon.type == 'ground') \
+                or (atk.type == 'psychic' and enemy_pokemon.type == 'poison') \
+                or (atk.type == 'ground' and enemy_pokemon.type == 'poison') \
+                or (atk.type == 'electric' and enemy_pokemon.type == 'flying') \
+                or (atk.type == 'ice' and enemy_pokemon.type == 'flying') \
+                or (atk.type == 'rock' and enemy_pokemon.type == 'flying'):
             return 2
 
         else:
             return 1
-
-
-
-
 
     def takedmg(self, atk, bonus, effectiveness, enemy_pokemon):
         """ Dmg=0.01×B×E×V×((0.2×N+1)×A×P25×D+2)
@@ -197,180 +233,240 @@ class Pokemon:
 
 
 class Charmander(Pokemon):
-    BASE_LIFE = 0
-    ATK = 0
-    DEF = 0
-    SP_ATK = 0
-    SP_DEF = 0
-    SPEED = 0
+    BASE_LIFE = 114
+    ATK = 79
+    DEF = 63
+    SP_ATK = 72
+    SP_DEF = 70
+    atk1 = Atk()
+    atk2 = Atk()
+    atk3 = Atk()
+    atk4 = Atk()
+    SPEED = 85
     LVL = 50
-    TYPE_ATK_1 = ''
-    TYPE_ATK_2 = ''
-    TYPE_ATK_3 = ''
-    TYPE_ATK_4 = ''
-    TYPE = ''
+    ELEMENT_TYPE = 'fire'
 
 
 class Bulbasaur(Pokemon):
-    BASE_LIFE = 0
-    ATK = 0
-    DEF = 0
-    SP_ATK = 0
-    SP_DEF = 0
-    SPEED = 0
+    BASE_LIFE = 120
+    ATK = 75
+    DEF = 69
+    SP_ATK = 76
+    SP_DEF = 85
+    atk1 = Atk()
+    atk2 = Atk()
+    atk3 = Atk()
+    atk4 = Atk()
+    SPEED = 65
     LVL = 50
-    TYPE = 'FIRE'
+    ELEMENT_TYPE = 'grass'
 
 
 class Squirtle(Pokemon):
-    BASE_LIFE = 0
-    ATK = 0
-    DEF = 0
-    SP_ATK = 0
-    SP_DEF = 0
-    SPEED = 0
+    BASE_LIFE = 119
+    ATK = 74
+    DEF = 85
+    SP_ATK = 63
+    SP_DEF = 84
+    atk1 = Atk()
+    atk2 = Atk()
+    atk3 = Atk()
+    atk4 = Atk()
+    SPEED = 63
     LVL = 50
-    TYPE = 'FIRE'
+    ELEMENT_TYPE = 'water'
 
 
 class Pickachu(Pokemon):
-    BASE_LIFE = 0
-    ATK = 0
-    DEF = 0
-    SP_ATK = 0
-    SP_DEF = 0
-    SPEED = 0
+    BASE_LIFE = 110
+    ATK = 82
+    DEF = 60
+    SP_ATK = 63
+    SP_DEF = 70
+    atk1 = Atk()
+    atk2 = Atk()
+    atk3 = Atk()
+    atk4 = Atk()
+    SPEED = 110
     LVL = 50
-    TYPE = 'FIRE'
+    ELEMENT_TYPE = 'electric'
 
 
 class Zorua(Pokemon):
-    BASE_LIFE = 0
-    ATK = 0
-    DEF = 0
-    SP_ATK = 0
-    SP_DEF = 0
-    SPEED = 0
+    BASE_LIFE = 115
+    ATK = 93
+    DEF = 60
+    SP_ATK = 90
+    SP_DEF = 60
+    atk1 = Atk()
+    atk2 = Atk()
+    atk3 = Atk()
+    atk4 = Atk()
+    SPEED = 85
     LVL = 50
-    TYPE = 'FIRE'
+    ELEMENT_TYPE = 'dark'
 
 
 class Gastly(Pokemon):
-    BASE_LIFE = 0
-    ATK = 0
-    DEF = 0
-    SP_ATK = 0
-    SP_DEF = 0
-    SPEED = 0
+    BASE_LIFE = 114
+    ATK = 79
+    DEF = 63
+    SP_ATK = 72
+    SP_DEF = 70
+    atk1 = Atk()
+    atk2 = Atk()
+    atk3 = Atk()
+    atk4 = Atk()
+    SPEED = 85
     LVL = 50
-    TYPE = 'FIRE'
+    ELEMENT_TYPE = 'fire'
 
 
 class Pidgay(Pokemon):
-    BASE_LIFE = 0
-    ATK = 0
-    DEF = 0
-    SP_ATK = 0
-    SP_DEF = 0
-    SPEED = 0
+    BASE_LIFE = 114
+    ATK = 79
+    DEF = 63
+    SP_ATK = 72
+    SP_DEF = 70
+    atk1 = Atk()
+    atk2 = Atk()
+    atk3 = Atk()
+    atk4 = Atk()
+    SPEED = 85
     LVL = 50
-    TYPE = 'FIRE'
+    ELEMENT_TYPE = 'fire'
 
 
 class Ekans(Pokemon):
-    BASE_LIFE = 0
-    ATK = 0
-    DEF = 0
-    SP_ATK = 0
-    SP_DEF = 0
-    SPEED = 0
+    BASE_LIFE = 114
+    ATK = 79
+    DEF = 63
+    SP_ATK = 72
+    SP_DEF = 70
+    atk1 = Atk()
+    atk2 = Atk()
+    atk3 = Atk()
+    atk4 = Atk()
+    SPEED = 85
     LVL = 50
-    TYPE = 'FIRE'
+    ELEMENT_TYPE = 'fire'
 
 
 class Cubone(Pokemon):
-    BASE_LIFE = 0
-    ATK = 0
-    DEF = 0
-    SP_ATK = 0
-    SP_DEF = 0
-    SPEED = 0
+    BASE_LIFE = 114
+    ATK = 79
+    DEF = 63
+    SP_ATK = 72
+    SP_DEF = 70
+    atk1 = Atk()
+    atk2 = Atk()
+    atk3 = Atk()
+    atk4 = Atk()
+    SPEED = 85
     LVL = 50
-    TYPE = 'FIRE'
+    ELEMENT_TYPE = 'fire'
 
 
 class Geodude(Pokemon):
-    BASE_LIFE = 0
-    ATK = 0
-    DEF = 0
-    SP_ATK = 0
-    SP_DEF = 0
-    SPEED = 0
+    BASE_LIFE = 114
+    ATK = 79
+    DEF = 63
+    SP_ATK = 72
+    SP_DEF = 70
+    atk1 = Atk()
+    atk2 = Atk()
+    atk3 = Atk()
+    atk4 = Atk()
+    SPEED = 85
     LVL = 50
-    TYPE = 'FIRE'
+    ELEMENT_TYPE = 'fire'
 
 
 class Abra(Pokemon):
-    BASE_LIFE = 0
-    ATK = 0
-    DEF = 0
-    SP_ATK = 0
-    SP_DEF = 0
-    SPEED = 0
+    BASE_LIFE = 114
+    ATK = 79
+    DEF = 63
+    SP_ATK = 72
+    SP_DEF = 70
+    atk1 = Atk()
+    atk2 = Atk()
+    atk3 = Atk()
+    atk4 = Atk()
+    SPEED = 85
     LVL = 50
-    TYPE = 'FIRE'
+    ELEMENT_TYPE = 'fire'
 
 
 class Eevee(Pokemon):
-    BASE_LIFE = 0
-    ATK = 0
-    DEF = 0
-    SP_ATK = 0
-    SP_DEF = 0
-    SPEED = 0
+    BASE_LIFE = 114
+    ATK = 79
+    DEF = 63
+    SP_ATK = 72
+    SP_DEF = 70
+    atk1 = Atk()
+    atk2 = Atk()
+    atk3 = Atk()
+    atk4 = Atk()
+    SPEED = 85
     LVL = 50
-    TYPE = 'FIRE'
+    ELEMENT_TYPE = 'fire'
 
 
 class Jigglypuff(Pokemon):
-    BASE_LIFE = 0
-    ATK = 0
-    DEF = 0
-    SP_ATK = 0
-    SP_DEF = 0
-    SPEED = 0
+    BASE_LIFE = 114
+    ATK = 79
+    DEF = 63
+    SP_ATK = 72
+    SP_DEF = 70
+    atk1 = Atk()
+    atk2 = Atk()
+    atk3 = Atk()
+    atk4 = Atk()
+    SPEED = 85
     LVL = 50
-    TYPE = 'FIRE'
+    ELEMENT_TYPE = 'fire'
 
 
 class Machop(Pokemon):
-    BASE_LIFE = 0
-    ATK = 0
-    DEF = 0
-    SP_ATK = 0
-    SP_DEF = 0
-    SPEED = 0
+    BASE_LIFE = 114
+    ATK = 79
+    DEF = 63
+    SP_ATK = 72
+    SP_DEF = 70
+    atk1 = Atk()
+    atk2 = Atk()
+    atk3 = Atk()
+    atk4 = Atk()
+    SPEED = 85
     LVL = 50
-    TYPE = 'FIRE'
+    ELEMENT_TYPE = 'fire'
 
 
 class Aron(Pokemon):
-    BASE_LIFE = 0
-    ATK = 0
-    DEF = 0
-    SP_ATK = 0
-    SP_DEF = 0
-    SPEED = 0
+    BASE_LIFE = 114
+    ATK = 79
+    DEF = 63
+    SP_ATK = 72
+    SP_DEF = 70
+    atk1 = Atk()
+    atk2 = Atk()
+    atk3 = Atk()
+    atk4 = Atk()
+    SPEED = 85
     LVL = 50
-    TYPE = 'FIRE'
+    ELEMENT_TYPE = 'fire'
 
 
 class Caterpie(Pokemon):
-    BASE_LIFE = 0
-    ATK = 0
-    DEF = 0
-    SP_ATK = 0
-    SP_DEF = 0
-    SPEED = 0
+    BASE_LIFE = 114
+    ATK = 79
+    DEF = 63
+    SP_ATK = 72
+    SP_DEF = 70
+    atk1 = Atk()
+    atk2 = Atk()
+    atk3 = Atk()
+    atk4 = Atk()
+    SPEED = 85
     LVL = 50
-    TYPE = 'FIRE'
+    ELEMENT_TYPE = 'fire'

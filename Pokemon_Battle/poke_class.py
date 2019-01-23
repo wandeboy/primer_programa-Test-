@@ -2,6 +2,7 @@
 from random import randint
 from time import sleep
 
+
 def ask_until_option_expected(options, string):
     selected_action = ""
 
@@ -12,12 +13,29 @@ def ask_until_option_expected(options, string):
 
 
 class Atk:
-    def __init__(self, name='tackle', element_type='normal', power=30, physical=True):
-        self.name = name
-        self.type = element_type
-        self.power = power
-        self.isphysical = physical
-        self.isspecial = not physical
+    name = ''
+    element_type = ''
+    power = ''
+    physical = None
+    accuracy = int
+    pp = int
+
+    def __init__(self):
+        self.name = self.name
+        self.type = self.element_type
+        self.power = self.power
+        self.accuracy = self.accuracy
+        self.pp = self.pp
+        self.isphysical = self.physical
+        self.isspecial = not self.physical
+
+
+class Tackle(Atk):
+    name = 'Tackle'
+    element_type = 'normal'
+    power = ''
+    physical = True
+    accuracy = ''
 
 
 class Pokemon:
@@ -41,32 +59,35 @@ class Pokemon:
         self.speed = self.SPEED
         self.type = self.ELEMENT_TYPE
 
-    def attack(self, enemy_pokemon,):
-        print('{} life: {}'.format(self.name, self.life).center(50, '='))
-        print('Yours Attacks:')
-        print('1 - {}'.format(self.atk1.name))
-        print('2 - {}'.format(self.atk2.name))
-        print('3 - {}'.format(self.atk3.name))
-        print('4 - {}'.format(self.atk4.name))
+    def attack(self, enemy_pokemon, is_user, choice=None):
+        self.show_life()
+        if is_user:
+            print('Yours Attacks:')
+            print('1 - {}'.format(self.atk1.name))
+            print('2 - {}'.format(self.atk2.name))
+            print('3 - {}'.format(self.atk3.name))
+            print('4 - {}'.format(self.atk4.name))
 
-        choice = ask_until_option_expected([1, 2, 3, 4], 'Which one should we use?')
+            choice = ask_until_option_expected([1, 2, 3, 4], 'Which attack should we use?')
+        else:
+            sleep(1.5)
 
         if choice == 1:
             bonus = self.bonus_type_atk_vs_type_selfpokemon(self.atk1)
             effectiveness = self.effectiveness(self.atk1, enemy_pokemon)
-            enemy_pokemon.takedmg(self.atk1, bonus, effectiveness, enemy_pokemon)
+            enemy_pokemon.takedmg(self.atk1, bonus, effectiveness, self)
         elif choice == 2:
             bonus = self.bonus_type_atk_vs_type_selfpokemon(self.atk2)
             effectiveness = self.effectiveness(self.atk2, enemy_pokemon)
-            enemy_pokemon.takedmg(self.atk2, bonus, effectiveness, enemy_pokemon)
+            enemy_pokemon.takedmg(self.atk2, bonus, effectiveness, self)
         elif choice == 3:
             bonus = self.bonus_type_atk_vs_type_selfpokemon(self.atk3)
             effectiveness = self.effectiveness(self.atk3, enemy_pokemon)
-            enemy_pokemon.takedmg(self.atk3, bonus, effectiveness, enemy_pokemon)
+            enemy_pokemon.takedmg(self.atk3, bonus, effectiveness, self)
         elif choice == 4:
             bonus = self.bonus_type_atk_vs_type_selfpokemon(self.atk4)
             effectiveness = self.effectiveness(self.atk4, enemy_pokemon)
-            enemy_pokemon.takedmg(self.atk4, bonus, effectiveness, enemy_pokemon)
+            enemy_pokemon.takedmg(self.atk4, bonus, effectiveness, self)
 
     def bonus_type_atk_vs_type_selfpokemon(self, atk):
         if atk.type == self.type:
@@ -232,17 +253,17 @@ class Pokemon:
 
         print('{} used: {}'.format(enemy_pokemon.name, atk.name))
         self.life -= dmg
-        sleep(0.8)
+        sleep(1)
         if effectiveness == 0.5:
             print('is not very effective')
         elif effectiveness == 1.5:
             print('Is super effective')
 
         print('{} did {} damage'.format(atk.name, dmg))
-        sleep(0.8)
+        sleep(1)
 
     def show_life(self):
-        print('Life of {}: {}'.format(self.name, self.life))
+        print('{} life: {}'.format(self.name, self.life).center(50, '='))
 
 
 class Charmander(Pokemon):

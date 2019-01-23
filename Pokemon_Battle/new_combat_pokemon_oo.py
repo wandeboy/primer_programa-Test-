@@ -37,37 +37,37 @@ def choose_your_pokemon(options):
     user_pokemon = ''
 
     if choice == 1:
-        user_pokemon = name_pokemon(poke_class.Charmander(), 'Charmander', choice)
+        user_pokemon = name_pokemon(poke_class.Charmander(name='Charmander'), 'Charmander', choice)
     elif choice == 2:
-        user_pokemon = name_pokemon(poke_class.Bulbasaur(), 'Bulbasaur', choice)
+        user_pokemon = name_pokemon(poke_class.Bulbasaur(name='Bulbasaur'), 'Bulbasaur', choice)
     elif choice == 3:
-        user_pokemon = name_pokemon(poke_class.Squirtle(), 'Squirtle', choice)
+        user_pokemon = name_pokemon(poke_class.Squirtle(name='Squirtle'), 'Squirtle', choice)
     elif choice == 4:
-        user_pokemon = name_pokemon(poke_class.Pickachu(), 'Pickachu', choice)
+        user_pokemon = name_pokemon(poke_class.Pickachu(name='Pickachu'), 'Pickachu', choice)
     elif choice == 5:
-        user_pokemon = name_pokemon(poke_class.Zorua(), 'Zorua', choice)
+        user_pokemon = name_pokemon(poke_class.Zorua(name='Zorua'), 'Zorua', choice)
     elif choice == 6:
-        user_pokemon = name_pokemon(poke_class.Gastly(), 'Gastly', choice)
+        user_pokemon = name_pokemon(poke_class.Gastly(name='Gastly'), 'Gastly', choice)
     elif choice == 7:
-        user_pokemon = name_pokemon(poke_class.Pidgay(), 'Pidgay', choice)
+        user_pokemon = name_pokemon(poke_class.Pidgay(name='Pidgay'), 'Pidgay', choice)
     elif choice == 8:
-        user_pokemon = name_pokemon(poke_class.Ekans(), 'Ekans', choice)
+        user_pokemon = name_pokemon(poke_class.Ekans(name='Ekans'), 'Ekans', choice)
     elif choice == 9:
-        user_pokemon = name_pokemon(poke_class.Cubone(), 'Cubone', choice)
+        user_pokemon = name_pokemon(poke_class.Cubone(name='Cubone'), 'Cubone', choice)
     elif choice == 10:
-        user_pokemon = name_pokemon(poke_class.Geodude(), 'Geodude', choice)
+        user_pokemon = name_pokemon(poke_class.Geodude(name='Geodude'), 'Geodude', choice)
     elif choice == 11:
-        user_pokemon = name_pokemon(poke_class.Abra(), 'Abra', choice)
+        user_pokemon = name_pokemon(poke_class.Abra(name='Abra'), 'Abra', choice)
     elif choice == 12:
-        user_pokemon = name_pokemon(poke_class.Eevee(), 'Eevee', choice)
+        user_pokemon = name_pokemon(poke_class.Eevee(name='Eevee'), 'Eevee', choice)
     elif choice == 13:
-        user_pokemon = name_pokemon(poke_class.Clefairy(), 'Clefairy', choice)
+        user_pokemon = name_pokemon(poke_class.Clefairy(name='Clefairy'), 'Clefairy', choice)
     elif choice == 14:
-        user_pokemon = name_pokemon(poke_class.Machop(), 'Machop', choice)
+        user_pokemon = name_pokemon(poke_class.Machop(name='Machop'), 'Machop', choice)
     elif choice == 15:
-        user_pokemon = name_pokemon(poke_class.Aron(), 'Aron', choice)
+        user_pokemon = name_pokemon(poke_class.Aron(name='Aron'), 'Aron', choice)
     elif choice == 16:
-        user_pokemon = name_pokemon(poke_class.Caterpie(), 'Caterpie', choice)
+        user_pokemon = name_pokemon(poke_class.Caterpie(name='Caterpie'), 'Caterpie', choice)
 
     return user_pokemon
 
@@ -155,13 +155,19 @@ def choose_enemy_pokemon(options):
 
 
 def user_turn(user_pokemon, enemy_pokemon):
+    is_user_turn = True
     print("Is your turn".center(50, "=").title())
-    user_pokemon.attack(enemy_pokemon)
-    enemy_pokemon.show_life()
+    sleep(1)
+    user_pokemon.attack(enemy_pokemon, is_user_turn)
+    sleep(1)
 
 
-def enemy_turn():
-    pass
+def enemy_turn(user_pokemon, enemy_pokemon):
+    is_user_turn = False
+    print("Enemy turn".center(50, "=").title())
+    choice_enemy_attack = randint(1, 4)
+    enemy_pokemon.attack(user_pokemon, is_user_turn, choice_enemy_attack)
+    sleep(1)
 
 
 def main():
@@ -176,7 +182,20 @@ def main():
     sleep(1)
     while not user_pokemon.life <= 0 or enemy_pokemon.life <= 0:
         user_turn(user_pokemon, enemy_pokemon)
-        enemy_turn()
+        enemy_turn(user_pokemon, enemy_pokemon)
+
+    if user_pokemon.life <= 0:
+        print('').center(50, "=").title()
+        print('Your Pokemon is Fainted').center(50, "=").title()
+        print('You scurried to a Pokémon Center, protecting the exhausted and fainted Pokémon from further harm...')\
+            .center(50, "=").title()
+        print('').center(50, "=").title()
+
+    elif enemy_pokemon.life <= 0:
+        print('').center(50, "=").title()
+        print('Enemy Pokemon is Fainted').center(50, "=").title()
+        print('¡You Win!').center(50, "=").title()
+        print('').center(50, "=").title()
 
 
 if __name__ == "__main__":

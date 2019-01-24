@@ -2,6 +2,7 @@ from time import sleep
 from random import randint
 from Pokemon_Battle import poke_class
 
+
 AMOUNT_OF_POKEMON_AVAILABLE = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
 
 
@@ -187,14 +188,14 @@ def main():
     if user_pokemon.life <= 0:
         print('').center(50, "=").title()
         print('Your Pokemon is Fainted').center(50, "=").title()
-        print('You scurried to a Pokémon Center, protecting the exhausted and fainted Pokémon from further harm...')\
+        print("You scurried to a Pokemon Center, protecting the exhausted and fainted Pokemon from further harm...")\
             .center(50, "=").title()
         print('').center(50, "=").title()
 
     elif enemy_pokemon.life <= 0:
         print('').center(50, "=").title()
         print('Enemy Pokemon is Fainted').center(50, "=").title()
-        print('¡You Win!').center(50, "=").title()
+        print("You Win!").center(50, "=").title()
         print('').center(50, "=").title()
 
 

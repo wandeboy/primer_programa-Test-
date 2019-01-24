@@ -1,6 +1,7 @@
 # encoding: utf-8
 from random import randint
 from time import sleep
+from Pokemon_Battle import atk_class
 
 
 def ask_until_option_expected(options, string):
@@ -12,42 +13,16 @@ def ask_until_option_expected(options, string):
     return int(selected_action)
 
 
-class Atk:
-    name = ''
-    element_type = ''
-    power = ''
-    physical = None
-    accuracy = int
-    pp = int
-
-    def __init__(self):
-        self.name = self.name
-        self.type = self.element_type
-        self.power = self.power
-        self.accuracy = self.accuracy
-        self.pp = self.pp
-        self.isphysical = self.physical
-        self.isspecial = not self.physical
-
-
-class Tackle(Atk):
-    name = 'Tackle'
-    element_type = 'normal'
-    power = ''
-    physical = True
-    accuracy = ''
-
-
 class Pokemon:
     BASE_LIFE = 0
     ATK = 0
     DEF = 0
     SP_ATK = 0
     SP_DEF = 0
-    atk1 = Atk()
-    atk2 = Atk()
-    atk3 = Atk()
-    atk4 = Atk()
+    atk1 = atk_class.Atk()
+    atk2 = atk_class.Atk()
+    atk3 = atk_class.Atk()
+    atk4 = atk_class.Atk()
     SPEED = 0
     LVL = 50
     ELEMENT_TYPE = ''
@@ -63,10 +38,10 @@ class Pokemon:
         self.show_life()
         if is_user:
             print('Yours Attacks:')
-            print('1 - {}'.format(self.atk1.name))
-            print('2 - {}'.format(self.atk2.name))
-            print('3 - {}'.format(self.atk3.name))
-            print('4 - {}'.format(self.atk4.name))
+            print('1 - {}({} PP)'.format(self.atk1.name, self.atk1.pp))
+            print('2 - {}({} PP)'.format(self.atk2.name, self.atk2.pp))
+            print('3 - {}({} PP)'.format(self.atk3.name, self.atk3.pp))
+            print('4 - {}({} PP)'.format(self.atk4.name, self.atk4.pp))
 
             choice = ask_until_option_expected([1, 2, 3, 4], 'Which attack should we use?')
         else:
@@ -272,10 +247,10 @@ class Charmander(Pokemon):
     DEF = 63
     SP_ATK = 72
     SP_DEF = 70
-    atk1 = Atk()
-    atk2 = Atk()
-    atk3 = Atk()
-    atk4 = Atk()
+    atk1 = atk_class.Tackle()
+    atk2 = atk_class.Tackle()
+    atk3 = atk_class.Tackle()
+    atk4 = atk_class.Tackle()
     SPEED = 85
     LVL = 50
     ELEMENT_TYPE = 'fire'
@@ -288,10 +263,10 @@ class Bulbasaur(Pokemon):
     DEF = 69
     SP_ATK = 76
     SP_DEF = 85
-    atk1 = Atk()
-    atk2 = Atk()
-    atk3 = Atk()
-    atk4 = Atk()
+    atk1 = atk_class.Magicalleaf()
+    atk2 = atk_class.Razorleaf()
+    atk3 = atk_class.MegaDrain()
+    atk4 = atk_class.Leafblade()
     SPEED = 65
     LVL = 50
     ELEMENT_TYPE = 'grass'
@@ -304,10 +279,10 @@ class Squirtle(Pokemon):
     DEF = 85
     SP_ATK = 63
     SP_DEF = 84
-    atk1 = Atk()
-    atk2 = Atk()
-    atk3 = Atk()
-    atk4 = Atk()
+    atk1 = atk_class.Tackle()
+    atk2 = atk_class.Tackle()
+    atk3 = atk_class.Tackle()
+    atk4 = atk_class.Tackle()
     SPEED = 63
     LVL = 50
     ELEMENT_TYPE = 'water'
@@ -320,10 +295,10 @@ class Pickachu(Pokemon):
     DEF = 60
     SP_ATK = 63
     SP_DEF = 70
-    atk1 = Atk()
-    atk2 = Atk()
-    atk3 = Atk()
-    atk4 = Atk()
+    atk1 = atk_class.Tackle()
+    atk2 = atk_class.Tackle()
+    atk3 = atk_class.Tackle()
+    atk4 = atk_class.Tackle()
     SPEED = 110
     LVL = 50
     ELEMENT_TYPE = 'electric'
@@ -336,10 +311,10 @@ class Zorua(Pokemon):
     DEF = 60
     SP_ATK = 90
     SP_DEF = 60
-    atk1 = Atk()
-    atk2 = Atk()
-    atk3 = Atk()
-    atk4 = Atk()
+    atk1 = atk_class.Tackle()
+    atk2 = atk_class.Tackle()
+    atk3 = atk_class.Tackle()
+    atk4 = atk_class.Tackle()
     SPEED = 85
     LVL = 50
     ELEMENT_TYPE = 'dark'
@@ -352,10 +327,10 @@ class Gastly(Pokemon):
     DEF = 50
     SP_ATK = 108
     SP_DEF = 55
-    atk1 = Atk()
-    atk2 = Atk()
-    atk3 = Atk()
-    atk4 = Atk()
+    atk1 = atk_class.Tackle()
+    atk2 = atk_class.Tackle()
+    atk3 = atk_class.Tackle()
+    atk4 = atk_class.Tackle()
     SPEED = 100
     LVL = 50
     ELEMENT_TYPE = 'ghost'
@@ -368,10 +343,10 @@ class Pidgay(Pokemon):
     DEF = 60
     SP_ATK = 49
     SP_DEF = 55
-    atk1 = Atk()
-    atk2 = Atk()
-    atk3 = Atk()
-    atk4 = Atk()
+    atk1 = atk_class.Tackle()
+    atk2 = atk_class.Tackle()
+    atk3 = atk_class.Tackle()
+    atk4 = atk_class.Tackle()
     SPEED = 76
     LVL = 50
     ELEMENT_TYPE = 'flying'
@@ -384,10 +359,10 @@ class Ekans(Pokemon):
     DEF = 64
     SP_ATK = 54
     SP_DEF = 74
-    atk1 = Atk()
-    atk2 = Atk()
-    atk3 = Atk()
-    atk4 = Atk()
+    atk1 = atk_class.Tackle()
+    atk2 = atk_class.Tackle()
+    atk3 = atk_class.Tackle()
+    atk4 = atk_class.Tackle()
     SPEED = 75
     LVL = 50
     ELEMENT_TYPE = 'poison'
@@ -400,10 +375,10 @@ class Cubone(Pokemon):
     DEF = 115
     SP_ATK = 54
     SP_DEF = 70
-    atk1 = Atk()
-    atk2 = Atk()
-    atk3 = Atk()
-    atk4 = Atk()
+    atk1 = atk_class.Tackle()
+    atk2 = atk_class.Tackle()
+    atk3 = atk_class.Tackle()
+    atk4 = atk_class.Tackle()
     SPEED = 55
     LVL = 50
     ELEMENT_TYPE = 'ground'
@@ -416,10 +391,10 @@ class Geodude(Pokemon):
     DEF = 120
     SP_ATK = 45
     SP_DEF = 50
-    atk1 = Atk()
-    atk2 = Atk()
-    atk3 = Atk()
-    atk4 = Atk()
+    atk1 = atk_class.Tackle()
+    atk2 = atk_class.Tackle()
+    atk3 = atk_class.Tackle()
+    atk4 = atk_class.Tackle()
     SPEED = 40
     LVL = 50
     ELEMENT_TYPE = 'rock'
@@ -432,10 +407,10 @@ class Abra(Pokemon):
     DEF = 35
     SP_ATK = 112
     SP_DEF = 75
-    atk1 = Atk()
-    atk2 = Atk()
-    atk3 = Atk()
-    atk4 = Atk()
+    atk1 = atk_class.Tackle()
+    atk2 = atk_class.Tackle()
+    atk3 = atk_class.Tackle()
+    atk4 = atk_class.Tackle()
     SPEED = 110
     LVL = 50
     ELEMENT_TYPE = 'psychic'
@@ -448,10 +423,10 @@ class Eevee(Pokemon):
     DEF = 70
     SP_ATK = 58
     SP_DEF = 85
-    atk1 = Atk()
-    atk2 = Atk()
-    atk3 = Atk()
-    atk4 = Atk()
+    atk1 = atk_class.Tackle()
+    atk2 = atk_class.Round()
+    atk3 = atk_class.Triattack()
+    atk4 = atk_class.Stomp()
     SPEED = 75
     LVL = 50
     ELEMENT_TYPE = 'normal'
@@ -464,10 +439,10 @@ class Clefairy(Pokemon):
     DEF = 68
     SP_ATK = 72
     SP_DEF = 85
-    atk1 = Atk()
-    atk2 = Atk()
-    atk3 = Atk()
-    atk4 = Atk()
+    atk1 = atk_class.Tackle()
+    atk2 = atk_class.Tackle()
+    atk3 = atk_class.Tackle()
+    atk4 = atk_class.Tackle()
     SPEED = 55
     LVL = 50
     ELEMENT_TYPE = 'fairy'
@@ -480,10 +455,10 @@ class Machop(Pokemon):
     DEF = 70
     SP_ATK = 49
     SP_DEF = 55
-    atk1 = Atk()
-    atk2 = Atk()
-    atk3 = Atk()
-    atk4 = Atk()
+    atk1 = atk_class.Tackle()
+    atk2 = atk_class.Tackle()
+    atk3 = atk_class.Tackle()
+    atk4 = atk_class.Tackle()
     SPEED = 5
     LVL = 50
     ELEMENT_TYPE = 'fight'
@@ -496,10 +471,10 @@ class Aron(Pokemon):
     DEF = 120
     SP_ATK = 54
     SP_DEF = 60
-    atk1 = Atk()
-    atk2 = Atk()
-    atk3 = Atk()
-    atk4 = Atk()
+    atk1 = atk_class.Mirrorshot()
+    atk2 = atk_class.Irontail()
+    atk3 = atk_class.Bulletpunch()
+    atk4 = atk_class.Geargrind()
     SPEED = 50
     LVL = 50
     ELEMENT_TYPE = 'steel'
@@ -512,10 +487,10 @@ class Caterpie(Pokemon):
     DEF = 55
     SP_ATK = 36
     SP_DEF = 40
-    atk1 = Atk()
-    atk2 = Atk()
-    atk3 = Atk()
-    atk4 = Atk()
+    atk1 = atk_class.Xscissor()
+    atk2 = atk_class.Bugbuzz()
+    atk3 = atk_class.Bugbite()
+    atk4 = atk_class.SilverWind()
     SPEED = 65
     LVL = 50
     ELEMENT_TYPE = 'bug'

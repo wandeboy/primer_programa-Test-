@@ -15,7 +15,7 @@ class Deck:
     suits = ["diamonds", "heart", "spades", "clubs"]
     max_number = 13
 
-    def __int__(self):
+    def __init__(self):
         self.cards = []
 
         for suit in self.suits:
@@ -38,7 +38,7 @@ class Deck:
 
 class Player:
     # Player need money
-    def __int__(self, name):
+    def __init__(self, name):
         self.name = name
         self.score = 0
 
@@ -61,19 +61,29 @@ class BlackjackGame:
         13: 10
     }
 
-    def __int__(self):
+    n_players = 2
+
+    def __init__(self):
         self.deck = Deck()
-        self.player = Player()
+        self.players = []
         self.table_cards = []
 
-    def ask_name(self):
-        name = None
-        while not name.type == str:
-            name = str(input("What's your name?: "))
-        self.player(name)
+    def ask_player_name(self, numbers_of_players):
+
+        confirmation = False
+        name = ""
+
+        while not confirmation:
+            name = input("what's the name of player {}: ".format(numbers_of_players))
+            if input("Are you sure? [Y/N]: ").upper() == "Y":
+                confirmation = True
+            if name == "":
+                name = "Player"
+
+        return name
 
     def draft_card(self):
-        card = deck.give_random_card()
+        card = self.deck.give_random_card()
         self.table_cards.append(card)
         print(card)
 
@@ -87,27 +97,45 @@ class BlackjackGame:
         return total
 
     def player_wants_to_continue(self):
-        response = input("Do you want a card? [Y/N]".upper())
+        response = input("Do you want a card? [Y/N]").upper()
         return response == "Y"
 
+    def start_turn(self, player):
+        self.table_cards = []
+        print("\n\n{}'s turn\n\n".format(player.name))
+
     def run(self):
-        user_continue = True
+        winner_score = 0
+        winner = None
 
-        while user_continue and self.count_table_cards() < 21:
-            self.draft_card()
-            user_continue = self.player_wants_to_continue()
+        for i in range(self.n_players):
+            self.players.append(Player(self.ask_player_name(i + 1)))
 
-        score = self.count_table_cards()
-        print("Your socre is {}".format(score))
+        for player in self.players:
+            self.start_turn(player)
 
-        if score > 21:
-            print("You Lose")
+            user_continue = True
+
+            while user_continue and self.count_table_cards() < 21:
+                self.draft_card()
+                user_continue = self.player_wants_to_continue()
+
+            player.score = self.count_table_cards()
+            print("Your socre is {}".format(player.score))
+
+            if player.score > 21:
+                print("You Lose")
+            elif player.score > winner_score:
+                winner_score = player.score
+                winner = player
+
+        print("The winner is: ---{}---".format(winner))
 
 
 # need a new class, croupier.
 
 
 if __name__ == "__main__":
-    deck = Deck()
-    print(Deck)
+
+    BlackjackGame().run()
 

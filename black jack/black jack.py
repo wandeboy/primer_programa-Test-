@@ -127,9 +127,9 @@ class BlackjackGame:
                 print("You Lose")
             elif player.score > winner_score:
                 winner_score = player.score
-                winner = player
+                winner = player.name
 
-        print("The winner is: ---{}---".format(winner))
+        print("\nThe winner is: ---{}---".format(winner))
 
 
 # need a new class, croupier.

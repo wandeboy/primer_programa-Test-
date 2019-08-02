@@ -125,4 +125,3 @@ class BlackjackUI:
 
 if __name__ == '__main__':
     BlackjackUI().run()
-

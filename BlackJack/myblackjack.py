@@ -1,6 +1,7 @@
 from random import randrange
 from tkinter import *
 from tkinter import ttk
+from tkinter import Tk
 
 from PIL import ImageTk, Image
 
@@ -30,11 +31,11 @@ class Card:
         self.number = number
         self.suit = suit
         self.tk_img = ImageTk.PhotoImage(
-            Image.open("{}{}_of_{}".format(
+            Image.open("{}{}_of_{}.png".format(
                 self.card_image_path,
                 self.number_name_mapping.get(self.number, self.number),
                 self.suit
-            ))
+            )).resize((103, 150),  Image.ANTIALIAS)
         )
 
 
@@ -92,10 +93,10 @@ class Blackjack:
         self.dealer.set_player_card(dealer_card)
         return player_card, dealer_card
 
-    def draft_card(self):
+    def draw_card(self):
         card = self.deck.give_random_card()
         self.table_cards.append(card)
-        return
+        return card
 
     def _calculate_score(self, player_card):
         total = 0
@@ -113,11 +114,75 @@ class Blackjack:
 
 
 class BlackjackUI:
+    back_card_img_path = "./asset/png/back.png"
+
     def __init__(self):
         self.ui_root = Tk()
 
         self.ui_title_frame = ttk.Frame(self.ui_root, padding="30 12 30 12")
         self.ui_title_frame.grid(sticky=(W, E))
+
+        self.ui_table_frame = ttk.Frame(self.ui_root, padding="30 12 30 12", width=200, height=450)
+        self.ui_table_frame.grid(sticky=(W, E))
+
+        self.ui_table_frame.rowconfigure(1, minsize=150)
+        self.ui_table_frame.rowconfigure(1, minsize=150)
+        self.ui_table_frame.rowconfigure(1, minsize=150)
+
+        self.ui_score_frame = ttk.Frame(self.ui_root, padding="30 12 30 12")
+        self.ui_score_frame.grid(sticky=(W, E))
+
+        ttk.Label(self.ui_title_frame, text="Blackjack", width=60).grid(column=1, row=1)
+        ttk.Button(self.ui_title_frame, text="Play", command=self.start_game).grid(column=2, row=1)
+
+        ttk.Label(self.ui_score_frame, text="Your points").grid(column=1, row=1)
+
+        self.player_score_label = ttk.Label(self.ui_score_frame, text="0", width=12)
+        self.player_score_label.grid(column=2, row=1)
+
+        ttk.Label(self.ui_score_frame, text="Dealer points").grid(column=3, row=1)
+
+        self.dealer_score_label = ttk.Label(self.ui_score_frame, text="0", width=12)
+        self.dealer_score_label.grid(column=4, row=1)
+
+        self.ui_give_card_button = ttk.Button(self.ui_score_frame, text="Draw",
+                                              command=self.draw_card, state=DISABLED)
+        self.ui_end_game_button = ttk.Button(self.ui_score_frame, text="Stay",
+                                             command=self.end_game, state=DISABLED)
+
+        self.ui_give_card_button.grid(column=5, row=1)
+        self.ui_end_game_button.grid(column=6, row=1)
+
+        self.game = None
+        self.ui_player_card_label = None
+        self.ui_dealer_card_label = None
+        self.ui_empty_table_label = None
+
+        self.tk_back_card_img = ImageTk.PhotoImage(
+            Image.open(self.back_card_img_path).resize((103, 150),  Image.ANTIALIAS))
+
+    def end_game(self):
+        pass
+
+    def start_game(self):
+        self.game = Blackjack()
+        player_card, dealer_card = self.game.give_initial_cards()
+
+        self.ui_player_card_label = ttk.Label(self.ui_table_frame, image=player_card.tk_img)
+        self.ui_player_card_label.grid(column=1, row=3)
+
+        self.ui_empty_table_label = ttk.Label(self.ui_table_frame, padding="12 30 12 30")
+        self.ui_empty_table_label.grid(column=1, row=2)
+
+        self.ui_dealer_card_label = ttk.Label(self.ui_table_frame, image=self.tk_back_card_img)
+        self.ui_dealer_card_label.grid(column=1, row=1)
+
+        self.draw_card()
+
+    def draw_card(self):
+        card = self.game.draw_card()
+        card_label = ttk.Label(self.ui_table_frame, image=card.tk_img)
+        card_label.grid(column=self.game.get_table_cards_counts() + 1, row=3)
 
     def run(self):
         self.ui_root.mainloop()

@@ -1,6 +1,6 @@
 import pickle
 from time import sleep
-from class_contact import Contact
+from all.class_contact import Contact
 
 
 ACTION_ADD_CONTACT = 1

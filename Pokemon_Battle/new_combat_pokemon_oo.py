@@ -181,22 +181,22 @@ def main():
 
     print('{} wild has appeared'.format(enemy_pokemon.name).center(50, "=").title())
     sleep(1)
-    while not user_pokemon.life <= 0 or enemy_pokemon.life <= 0:
+    while not (user_pokemon.life <= 0 or enemy_pokemon.life <= 0):
         user_turn(user_pokemon, enemy_pokemon)
         enemy_turn(user_pokemon, enemy_pokemon)
 
     if user_pokemon.life <= 0:
-        print('').center(50, "=").title()
-        print('Your Pokemon is Fainted').center(50, "=").title()
-        print("You scurried to a Pokemon Center, protecting the exhausted and fainted Pokemon from further harm...")\
-            .center(50, "=").title()
-        print('').center(50, "=").title()
+        print(''.center(50, "=").title())
+        print('Your Pokemon is Fainted'.center(50, "=").title())
+        print("You scurried to a Pokemon Center, protecting \n the exhausted and fainted Pokemon from further harm..."
+              .center(50, "=").title())
+        print(''.center(50, "=").title())
 
-    elif enemy_pokemon.life <= 0:
-        print('').center(50, "=").title()
-        print('Enemy Pokemon is Fainted').center(50, "=").title()
-        print("You Win!").center(50, "=").title()
-        print('').center(50, "=").title()
+    elif enemy_pokemon.life <= 1:
+        print(''.center(50, "=").title())
+        print('Enemy Pokemon is Fainted'.center(50, "=").title())
+        print("You Win!".center(50, "=").title())
+        print(''.center(50, "=").title())
 
 
 if __name__ == "__main__":
